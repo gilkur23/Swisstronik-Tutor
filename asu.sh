@@ -40,12 +40,13 @@ module.exports = {
   networks: {
     swisstronik: {
       url: "https://json-rpc.testnet.swisstronik.com/",
-      accounts: [\`0x\${process.env.PRIVATE_KEY}\`],
+      accounts: [`0x\${process.env.PRIVATE_KEY}`],
     },
   },
 };
 EOL
 echo "Hardhat configuration completed."
+
 
 echo "Creating Hello_swtr.sol contract..."
 mkdir -p contracts
