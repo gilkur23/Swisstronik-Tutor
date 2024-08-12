@@ -4,7 +4,7 @@ wget -O loader.sh https://raw.githubusercontent.com/DiscoverMyself/Ramanode-Guid
 curl -s https://raw.githubusercontent.com/DiscoverMyself/Ramanode-Guides/main/logo.sh | bash
 sleep 4
 
-sudo apt-get update && sudo apt-get upgrade -y -y
+sudo apt-get update && sudo apt get upgrade -y
 clear
 
 echo "Installing Hardhat and dotenv..."
@@ -40,7 +40,7 @@ module.exports = {
   networks: {
     swisstronik: {
       url: "https://json-rpc.testnet.swisstronik.com/",
-      accounts: [`0x${process.env.PRIVATE_KEY}`]`,
+      accounts: [\`0x\${process.env.PRIVATE_KEY}\`],
     },
   },
 };
