@@ -79,18 +79,27 @@ echo "Contract compiled."
 echo "Creating deploy.js script..."
 mkdir -p scripts
 cat <<EOL > scripts/deploy.js
+// scripts/deploy.js
 const hre = require("hardhat");
 
 async function main() {
-  const contract = await hre.ethers.deployContract("Swisstronik", ["Hello Swisstronik from Happy Cuan Airdrop!!"]);
-  await contract.waitForDeployment();
-  console.log(\`Swisstronik contract deployed to \${contract.target}\`);
+  const [deployer] = await hre.ethers.getSigners();
+
+  console.log("Deploying contracts with the account:", deployer.address);
+
+  const Swisstronik = await hre.ethers.getContractFactory("Swisstronik");
+  const swisstronik = await Swisstronik.deploy("Hello Swisstronik from Happy Cuan Airdrop!!");
+
+  await swisstronik.deployed();
+
+  console.log("Swisstronik contract deployed to:", swisstronik.address);
 }
 
 main().catch((error) => {
   console.error(error);
   process.exitCode = 1;
 });
+
 EOL
 echo "deploy.js script created."
 
